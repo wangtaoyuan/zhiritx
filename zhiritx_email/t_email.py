@@ -9,6 +9,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.utils import formataddr
 import panding
+import ncepuWeeks
 import time
 from time import sleep
 # my_sender='846292076@qq.com'    # 发件人邮箱账号
@@ -33,7 +34,7 @@ while(True):
     def mail(worker_name, worker_email):
         ret = True
         try:
-            msg=MIMEText('天将降大任于斯人也..记得今天值日', 'plain', 'utf-8')
+            msg=MIMEText('天将降大任于斯人也..记得今天值日。本周为第%d' % ncepuWeeks.weeks_answer + '周', 'plain', 'utf-8')
             msg['From']=formataddr(["提醒助理", panding.my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
             msg['To']=formataddr(["可爱的"+worker_name, worker_email])              # 括号里的对应收件人邮箱昵称、收件人邮箱账号
             msg['Subject'] = panding.my_title               # 邮件的主题，也可以说是标题
@@ -69,5 +70,5 @@ while(True):
         flag = 0#只要flag变为0，就让i = date_now
         i = date_now
         print(date_now)
-        
+     
     sleep(60)
