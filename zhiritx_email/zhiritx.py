@@ -20,8 +20,7 @@ from time import sleep
 
 date_now = int(time.strftime('%m', time.localtime()) + time.strftime('%d', time.localtime()))
 
-date_workers = {423: '常雪松', 424: '李鑫', 425: '王阳', 426: '颉鑫', 427: '贾若愚', 428: '王涛渊', 502: '张旭', 503: '陈秀新', 504: '李鹏飞', 505: '高靖智'， 506: '王会月'
-				507: '李佳锦', 508: '郭佳兴', 509: '常雪松', 510: '李鑫', 511: '王阳', 512: '颉鑫', 513: '贾若愚', 514: '王涛渊'}
+date_workers = {423: '常雪松', 424: '李鑫', 425: '王阳', 426: '颉鑫', 427: '贾若愚', 428: '王涛渊', 502: '张旭', 503: '陈秀新', 504: '李鹏飞', 505: '王涛渊', 506: '王会月', 507: '李佳锦', 508: '郭佳兴', 509: '常雪松', 510: '李鑫', 511: '王阳', 512: '颉鑫', 513: '贾若愚', 514: '王涛渊'}
 email_workers = {'常雪松': '626267475@qq.com', '李鑫': '907035184@qq.com',  '王阳': '28700776@qq.com',
                  '颉鑫': '837207831@qq.com', '贾若愚': '672401341@qq.com',  '王涛渊': '846292076@qq.com',
                  '李鹏飞': '1751409741@qq.com', '李佳锦': '972526556@qq.com', '王会月': '1174361204@qq.com',
@@ -31,13 +30,16 @@ email_workers = {'常雪松': '626267475@qq.com', '李鑫': '907035184@qq.com', 
 
 i = date_now
 flag = 0
-while(True):
-    def mail(worker_name, worker_email):
+
+line1 = """<p>莫忘值日A105</p>"""
+line2 = """<a href="https://aiqi-oss1.oss-cn-beijing.aliyuncs.com/%E5%9B%BE%E7%89%87/%E5%80%BC%E6%97%A5%E8%A1%A8.png?x-oss-process=style/1">值日表</a>"""
+line3 = """<p>本周为华电第%d周</p>""" % ncepuWeeks.weeks_answer
+def mail(worker_name, worker_email):
         ret = True
         try:
-            msg=MIMEText('天将降大任于斯人也..记得今天值日。本周为第%d' % ncepuWeeks.weeks_answer + '周', 'plain', 'utf-8')
+            msg=MIMEText(line1 + line2 + line3, 'html', 'utf-8')
             msg['From']=formataddr(["提醒助理", panding.my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
-            msg['To']=formataddr(["可爱的"+worker_name, worker_email])              # 括号里的对应收件人邮箱昵称、收件人邮箱账号
+            msg['To']=formataddr(["勤劳的"+worker_name, worker_email])              # 括号里的对应收件人邮箱昵称、收件人邮箱账号
             msg['Subject'] = panding.my_title               # 邮件的主题，也可以说是标题
             server = smtplib.SMTP_SSL("smtp.qq.com", 465)  # 发件人邮箱中的SMTP服务器，qq邮箱端口是465
             server.login(panding.my_sender, panding.my_pass)  # 括号中对应的是发件人邮箱账号、邮箱密码
@@ -46,11 +48,11 @@ while(True):
         except Exception:  # 如果 try 中的语句没有执行，则会执行下面的 ret=False
             ret = False
         return ret
-       
+while(True):    
     if date_now in date_workers:
         worker_name = date_workers[date_now]
         worker_email = email_workers[worker_name]
-        if flag == 0 and time.strftime('%H',time.localtime()) == '09': #九点发送信息
+        if flag == 0 and time.strftime('%H',time.localtime()) == '20': #九点发送信息
             ret = mail(worker_name, worker_email)#发送邮件
             if ret:
                 flag = 1
@@ -66,7 +68,6 @@ while(True):
         print('今日不值班')
     
     date_now = int(time.strftime('%m',time.localtime()) + time.strftime('%d',time.localtime()))
-#   date_now = int(time.strftime('%H',time.localtime()))
     if(date_now != i and flag == 1): #只要i ！= date_now，就让flag变为0
         flag = 0#只要flag变为0，就让i = date_now
         i = date_now
