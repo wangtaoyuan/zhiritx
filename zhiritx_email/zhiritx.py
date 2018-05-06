@@ -18,9 +18,12 @@ from time import sleep
 # my_title='105实验室值日提醒'
 # user_name='值日生'
 
-date_now = int(time.strftime('%m', time.localtime()) + time.strftime('%d', time.localtime()))
+# date_now = int(time.strftime('%m', time.localtime()) + time.strftime('%d', time.localtime()))#月和日
+date_now = 0
 
-date_workers = {423: '常雪松', 424: '李鑫', 425: '王阳', 426: '颉鑫', 427: '贾若愚', 428: '王涛渊', 502: '张旭', 503: '陈秀新', 504: '李鹏飞', 505: '王涛渊', 506: '王会月', 507: '李佳锦', 508: '郭佳兴', 509: '常雪松', 510: '李鑫', 511: '王阳', 512: '颉鑫', 513: '贾若愚', 514: '王涛渊'}
+date_workers = {423: '常雪松', 424: '李鑫', 425: '王阳', 426: '颉鑫', 427: '贾若愚', 428: '王涛渊',
+                502: '张旭', 503: '陈秀新', 504: '李鹏飞', 505: '王涛渊', 506: '王涛渊', 507: '李佳锦',
+                508: '郭佳兴', 509: '常雪松', 510: '李鑫', 511: '王阳', 512: '颉鑫', 513: '贾若愚', 514: '王涛渊'}
 email_workers = {'常雪松': '626267475@qq.com', '李鑫': '907035184@qq.com',  '王阳': '28700776@qq.com',
                  '颉鑫': '837207831@qq.com', '贾若愚': '672401341@qq.com',  '王涛渊': '846292076@qq.com',
                  '李鹏飞': '1751409741@qq.com', '李佳锦': '972526556@qq.com', '王会月': '1174361204@qq.com',
@@ -48,14 +51,20 @@ def mail(worker_name, worker_email):
         except Exception:  # 如果 try 中的语句没有执行，则会执行下面的 ret=False
             ret = False
         return ret
-while(True):    
+while(True):
+    if(date_now != i and flag == 1): #只要i ！= date_now，就让flag变为0
+        flag = 0 #只要flag变为0，就让i = date_now
+        i = date_now
+        print(date_now)
+
     if date_now in date_workers:
         worker_name = date_workers[date_now]
         worker_email = email_workers[worker_name]
-        if flag == 0 and time.strftime('%H',time.localtime()) == '20': #九点发送信息
+        if flag == 0 and time.strftime('%H',time.localtime()) == '09': #九点发送信息
             ret = mail(worker_name, worker_email)#发送邮件
             if ret:
                 flag = 1
+                i = date_now
                 print("邮件发送成功", worker_name, worker_email)
             else:
                 print("邮件发送失败")
@@ -65,12 +74,9 @@ while(True):
             print("今日已发送")
         
     else:
-        print('今日不值班')
+        print('今日无人值日')
     
     date_now = int(time.strftime('%m',time.localtime()) + time.strftime('%d',time.localtime()))
-    if(date_now != i and flag == 1): #只要i ！= date_now，就让flag变为0
-        flag = 0#只要flag变为0，就让i = date_now
-        i = date_now
-        print(date_now)
+
      
-    sleep(60)
+    sleep(5)
