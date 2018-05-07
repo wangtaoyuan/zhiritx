@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2105d1db-d371-4aba-b2f2-19f8525fe2be" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ncepuWeeks.py" beforeDir="false" afterPath="$PROJECT_DIR$/ncepuWeeks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zhiritx.py" beforeDir="false" afterPath="$PROJECT_DIR$/zhiritx.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,7 +25,7 @@
       <file leaf-file-name="zhiritx.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zhiritx.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
+            <state relative-caret-position="114">
               <caret line="69" column="68" selection-start-line="69" selection-start-column="68" selection-end-line="69" selection-end-column="68" />
               <folding>
                 <element signature="e#76#90#0" expanded="true" />
@@ -40,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/ncepuWeeks.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3268">
-              <caret line="175" column="15" lean-forward="true" selection-start-line="175" selection-start-column="15" selection-end-line="175" selection-end-column="15" />
+              <caret line="175" column="15" selection-start-line="175" selection-start-column="15" selection-end-line="175" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -186,10 +184,10 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17965654" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17965654" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.20384048" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.20384048" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32941177" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -246,13 +244,13 @@
     <entry file="file://$PROJECT_DIR$/ncepuWeeks.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3268">
-          <caret line="175" column="15" lean-forward="true" selection-start-line="175" selection-start-column="15" selection-end-line="175" selection-end-column="15" />
+          <caret line="175" column="15" selection-start-line="175" selection-start-column="15" selection-end-line="175" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/zhiritx.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
+        <state relative-caret-position="114">
           <caret line="69" column="68" selection-start-line="69" selection-start-column="68" selection-end-line="69" selection-end-column="68" />
           <folding>
             <element signature="e#76#90#0" expanded="true" />

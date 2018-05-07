@@ -67,7 +67,7 @@ while(True):
     if date_now in date_workers:
         worker_name = date_workers[date_now]
         worker_email = email_workers[worker_name]
-        if flag == 0 and time.strftime('%H',time.localtime()) == '20': #九点发送信息
+        if flag == 0 and time.strftime('%H',time.localtime()) == '09': #九点发送信息
             ret = mail(worker_name, worker_email)#发送邮件
             if ret:
                 flag = 1
