@@ -18,11 +18,11 @@ from time import sleep
 # my_title='105实验室值日提醒'
 # user_name='值日生'
 
-# date_now = int(time.strftime('%m', time.localtime()) + time.strftime('%d', time.localtime()))#月和日
-date_now = 0
+date_now = int(time.strftime('%m', time.localtime()) + time.strftime('%d', time.localtime()))#月和日
+
 
 date_workers = {423: '常雪松', 424: '李鑫', 425: '王阳', 426: '颉鑫', 427: '贾若愚', 428: '王涛渊',
-                502: '张旭', 503: '陈秀新', 504: '李鹏飞', 505: '王涛渊', 506: '王涛渊', 507: '李佳锦',
+                502: '张旭', 503: '陈秀新', 504: '李鹏飞', 505: '王涛渊', 506: '王涛渊', 507: '王涛渊',
                 508: '郭佳兴', 509: '常雪松', 510: '李鑫', 511: '王阳', 512: '颉鑫', 513: '贾若愚', 514: '王涛渊'}
 email_workers = {'常雪松': '626267475@qq.com', '李鑫': '907035184@qq.com',  '王阳': '28700776@qq.com',
                  '颉鑫': '837207831@qq.com', '贾若愚': '672401341@qq.com',  '王涛渊': '846292076@qq.com',
@@ -36,10 +36,12 @@ flag = 0
 
 line1 = """<p>莫忘值日A105</p>"""
 line2 = """<a href="https://aiqi-oss1.oss-cn-beijing.aliyuncs.com/%E5%9B%BE%E7%89%87/%E5%80%BC%E6%97%A5%E8%A1%A8.png?x-oss-process=style/1">值日表</a>"""
-line3 = """<p>本周为华电第%d周</p>""" % ncepuWeeks.weeks_answer
+
+# print('邮件内容：%s\n%s\n%s' % (line1, line2, line3))
 def mail(worker_name, worker_email):
         ret = True
         try:
+            global line3
             msg=MIMEText(line1 + line2 + line3, 'html', 'utf-8')
             msg['From']=formataddr(["提醒助理", panding.my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
             msg['To']=formataddr(["勤劳的"+worker_name, worker_email])              # 括号里的对应收件人邮箱昵称、收件人邮箱账号
@@ -57,10 +59,15 @@ while(True):
         i = date_now
         print(date_now)
 
+    global line3
+    print(time.strftime('%Y%m%d'))
+    line3 = """<p>本周为华电第%d周</p>""" % ncepuWeeks.weeks(time.strftime('%Y%m%d'))
+    print(line3)
+
     if date_now in date_workers:
         worker_name = date_workers[date_now]
         worker_email = email_workers[worker_name]
-        if flag == 0 and time.strftime('%H',time.localtime()) == '09': #九点发送信息
+        if flag == 0 and time.strftime('%H',time.localtime()) == '20': #九点发送信息
             ret = mail(worker_name, worker_email)#发送邮件
             if ret:
                 flag = 1
@@ -79,4 +86,4 @@ while(True):
     date_now = int(time.strftime('%m',time.localtime()) + time.strftime('%d',time.localtime()))
 
      
-    sleep(5)
+    sleep(300)
