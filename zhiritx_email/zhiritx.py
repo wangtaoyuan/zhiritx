@@ -47,7 +47,7 @@ while(True):
         print(date_now)
 
     global line3
-    print(time.strftime('%Y年%m月%d日'))
+    print(time.strftime('%Y%m%d'))
     line3 = """<p>本周为华电第%d周</p>""" % ncepuWeeks.weeks(time.strftime('%Y%m%d'))
     print(line3)
 
